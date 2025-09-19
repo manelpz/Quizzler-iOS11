@@ -11,21 +11,49 @@ import UIKit
 class ViewController: UIViewController {
     
     //Place your instance variables here
+    let allQuestions = QuestionBank()
+    var pickedAnswer : Bool = false
+    var questionNumber : Int = 0
     
-    
+    @IBOutlet weak var questionLabelBackground: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var buttonTrue: UIButton!
+    @IBOutlet weak var buttonFalse: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let firstQuestion = allQuestions.list[0]
+        questionLabel.text = firstQuestion.text
+        
+        questionLabel.layer.cornerRadius = 25  // Ajusta el radio como quieras
+        questionLabel.layer.masksToBounds = true // Necesario para que se aplique el redondeado
+        
+        buttonTrue.layer.cornerRadius = 20
+        buttonTrue.layer.masksToBounds = true
+        
+        buttonFalse.layer.cornerRadius = 20
+        buttonFalse.layer.masksToBounds = true
+        
+        questionLabelBackground.layer.cornerRadius = 25
+        questionLabelBackground.layer.masksToBounds = true
     }
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-  
+        if sender.tag == 1 {
+            pickedAnswer = true
+        }else if sender.tag == 2{
+            pickedAnswer = false
+        }
+        checkAnswer()
+        
+        questionNumber += 1
+        
+        nextQuestion()
     }
     
     
@@ -36,16 +64,40 @@ class ViewController: UIViewController {
 
     func nextQuestion() {
         
+        if questionNumber <= 12 {
+            questionLabel.text = allQuestions.list[questionNumber].text
+        }else{
+            //questionLabel.text = "End of the Quiz"
+            questionNumber = 0
+            
+            let alert = UIAlertController(title: "Awsome", message: "You're finished all the questions, do you want to start over?", preferredStyle: .alert)
+            
+            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {(UIAlertAction) in
+                self.startOver()
+            })
+            
+            alert.addAction(restartAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+        }
     }
     
     
     func checkAnswer() {
+        let correctAnswer = allQuestions.list[questionNumber].correctAnswer
         
+        if correctAnswer == pickedAnswer{
+            
+        }else{
+            
+        }
     }
     
     
     func startOver() {
-       
+        questionNumber = 0
+        nextQuestion()
     }
     
 
