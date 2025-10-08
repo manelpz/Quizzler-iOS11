@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		136EFAA72E95FDAD003F03EB /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 136EFAA62E95FDAD003F03EB /* ProgressHUD */; };
+		136EFAAA2E964AB3003F03EB /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 136EFAA92E964AB3003F03EB /* ProgressHUD */; };
 		13794E062E7BF4AE0046EE7C /* LABLOGONewRound2.png in Resources */ = {isa = PBXBuildFile; fileRef = 13794E052E7BF4AD0046EE7C /* LABLOGONewRound2.png */; };
 		13794E082E7D14FC0046EE7C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13794E072E7D14F00046EE7C /* Question.swift */; };
 		13794E0A2E7D192D0046EE7C /* QuestionBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13794E092E7D18E60046EE7C /* QuestionBank.swift */; };
@@ -35,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136EFAA72E95FDAD003F03EB /* ProgressHUD in Frameworks */,
+				136EFAAA2E964AB3003F03EB /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +155,9 @@
 				Base,
 			);
 			mainGroup = 633646B01B8C657400FF45E2;
+			packageReferences = (
+				136EFAA82E964AB3003F03EB /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			productRefGroup = 633646BA1B8C657400FF45E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -253,7 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -299,10 +306,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -313,8 +321,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Quizzler/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.londonappbrewery.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.emma.quizzler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -331,8 +342,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Quizzler/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.londonappbrewery.$(PRODUCT_NAME:rfc1034identifier)";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.emma.quizzler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -364,6 +378,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		136EFAA52E95FDAD003F03EB /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 14.1.4;
+			};
+		};
+		136EFAA82E964AB3003F03EB /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		136EFAA62E95FDAD003F03EB /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 136EFAA52E95FDAD003F03EB /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+		136EFAA92E964AB3003F03EB /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 136EFAA82E964AB3003F03EB /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 633646B11B8C657400FF45E2 /* Project object */;
 }

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,14 +46,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHh-ve-yfT">
                                 <rect key="frame" x="0.0" y="620" width="375" height="47"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-Z7-OdN">
-                                        <rect key="frame" x="0.0" y="33" width="24" height="14"/>
-                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="14" id="O8k-ES-fgz"/>
-                                            <constraint firstAttribute="width" constant="24" id="iCP-9o-N7W"/>
-                                        </constraints>
-                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0R-Fj-fUI">
                                         <rect key="frame" x="223" y="0.0" width="116" height="21"/>
                                         <constraints>
@@ -78,10 +69,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93590599299999999" green="0.94143950939999999" blue="0.96329504249999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Dsa-Z7-OdN" secondAttribute="bottom" id="0nb-fJ-4vp"/>
                                     <constraint firstItem="qil-6C-XPA" firstAttribute="top" secondItem="gHh-ve-yfT" secondAttribute="top" id="4Km-ra-lKe"/>
                                     <constraint firstItem="c0R-Fj-fUI" firstAttribute="top" secondItem="gHh-ve-yfT" secondAttribute="top" id="FrD-bq-Sm6"/>
-                                    <constraint firstItem="Dsa-Z7-OdN" firstAttribute="leading" secondItem="gHh-ve-yfT" secondAttribute="leading" id="Gsj-Tc-lMw"/>
                                     <constraint firstAttribute="trailing" secondItem="c0R-Fj-fUI" secondAttribute="trailing" constant="36" id="T0t-vv-MY0"/>
                                     <constraint firstItem="qil-6C-XPA" firstAttribute="leading" secondItem="gHh-ve-yfT" secondAttribute="leading" constant="29" id="USt-Kx-O3q"/>
                                     <constraint firstAttribute="height" constant="47" id="imV-DY-geY"/>
@@ -151,6 +140,9 @@
                                             <action selector="answerPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="E6e-2f-z0q"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="inr-Ai-rW0">
+                                        <rect key="frame" x="8" y="252" width="359" height="4"/>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9340164661" green="0.94119054079999998" blue="0.965770185" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -162,9 +154,12 @@
                                     <constraint firstItem="exB-ZS-1U0" firstAttribute="centerY" secondItem="lYI-Ly-TJ0" secondAttribute="centerY" constant="32" id="U2R-9n-8Yj"/>
                                     <constraint firstItem="T5N-xc-sVz" firstAttribute="centerY" secondItem="lYI-Ly-TJ0" secondAttribute="centerY" constant="32" id="X68-aS-4q0"/>
                                     <constraint firstItem="exB-ZS-1U0" firstAttribute="left" secondItem="lYI-Ly-TJ0" secondAttribute="left" constant="25" id="aCu-qw-v0d"/>
+                                    <constraint firstAttribute="bottom" secondItem="inr-Ai-rW0" secondAttribute="bottom" constant="19" id="b3A-1f-E8t"/>
                                     <constraint firstItem="T5N-xc-sVz" firstAttribute="leading" secondItem="exB-ZS-1U0" secondAttribute="trailing" constant="14" id="bNV-7U-rae"/>
                                     <constraint firstItem="exB-ZS-1U0" firstAttribute="width" secondItem="T5N-xc-sVz" secondAttribute="width" id="d4x-tK-Odu"/>
+                                    <constraint firstItem="inr-Ai-rW0" firstAttribute="leading" secondItem="lYI-Ly-TJ0" secondAttribute="leading" constant="8" id="jfs-Jb-fdV"/>
                                     <constraint firstItem="exB-ZS-1U0" firstAttribute="height" secondItem="T5N-xc-sVz" secondAttribute="height" id="kdJ-1C-vWq"/>
+                                    <constraint firstAttribute="trailing" secondItem="inr-Ai-rW0" secondAttribute="trailing" constant="8" id="s8m-wh-5gH"/>
                                     <constraint firstItem="T5N-xc-sVz" firstAttribute="top" secondItem="vFh-zh-qZo" secondAttribute="bottom" constant="71.5" id="t4A-Sx-C2j"/>
                                     <constraint firstItem="vFh-zh-qZo" firstAttribute="leading" secondItem="lYI-Ly-TJ0" secondAttribute="leading" constant="48" id="zBu-bY-Dbc"/>
                                 </constraints>
@@ -193,8 +188,8 @@
                     <connections>
                         <outlet property="buttonFalse" destination="T5N-xc-sVz" id="qkg-zh-tet"/>
                         <outlet property="buttonTrue" destination="exB-ZS-1U0" id="zY7-3J-9xG"/>
-                        <outlet property="progressBar" destination="Dsa-Z7-OdN" id="Jep-Z7-uzr"/>
                         <outlet property="progressLabel" destination="qil-6C-XPA" id="vOI-gf-aRi"/>
+                        <outlet property="progressView" destination="inr-Ai-rW0" id="YUF-vM-o7j"/>
                         <outlet property="questionLabel" destination="4GJ-Ce-brK" id="pIn-gm-ACF"/>
                         <outlet property="questionLabelBackground" destination="vFh-zh-qZo" id="9lJ-mt-0O7"/>
                         <outlet property="scoreLabel" destination="c0R-Fj-fUI" id="31D-zq-NpU"/>
@@ -207,8 +202,5 @@
     </scenes>
     <resources>
         <image name="background_green" width="600" height="300"/>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

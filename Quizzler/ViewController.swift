@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ViewController: UIViewController {
     
@@ -14,11 +15,13 @@ class ViewController: UIViewController {
     let allQuestions = QuestionBank()
     var pickedAnswer : Bool = false
     var questionNumber : Int = 0
+    var score : Int = 0
     
     @IBOutlet weak var questionLabelBackground: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet var progressBar: UIView!
+
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var buttonTrue: UIButton!
     @IBOutlet weak var buttonFalse: UIButton!
@@ -26,9 +29,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstQuestion = allQuestions.list[0]
-        questionLabel.text = firstQuestion.text
-        
+        //let firstQuestion = allQuestions.list[0]
+        //questionLabel.text = firstQuestion.text
+        nextQuestion()
         questionLabel.layer.cornerRadius = 25  // Ajusta el radio como quieras
         questionLabel.layer.masksToBounds = true // Necesario para que se aplique el redondeado
         
@@ -58,7 +61,11 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      
+        scoreLabel.text = "Score: \(score)"
+        progressLabel.text = "\(questionNumber + 1 ) / 13"
+        //progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
+        let progres = Float(questionNumber + 1) / 13.0
+        progressView.setProgress(progres, animated: true)
     }
     
 
@@ -66,6 +73,7 @@ class ViewController: UIViewController {
         
         if questionNumber <= 12 {
             questionLabel.text = allQuestions.list[questionNumber].text
+            updateUI()
         }else{
             //questionLabel.text = "End of the Quiz"
             questionNumber = 0
@@ -88,15 +96,18 @@ class ViewController: UIViewController {
         let correctAnswer = allQuestions.list[questionNumber].correctAnswer
         
         if correctAnswer == pickedAnswer{
-            
+            score += 1
+            ProgressHUD.succeed("Correct!", delay: 1.5)
         }else{
             
+            ProgressHUD.failed("Wrong!")
         }
     }
     
     
     func startOver() {
         questionNumber = 0
+        score = 0
         nextQuestion()
     }
     
